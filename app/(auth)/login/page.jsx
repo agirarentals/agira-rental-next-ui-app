@@ -2,13 +2,22 @@
 import { Button } from "@nextui-org/button";
 import { main } from "framer-motion/client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { auth } from "../../../lib/firestore/firestore";
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
+import { useAuth } from "../../../contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const {user}=useAuth();
+  const router=useRouter();
+  useEffect(()=>{
+    if(user){
+      router.push("/dashboard")
+    }
+  },[user])
   return (
     <main className="w-full flex justify-center items-center p-24 min-h-screen bg-gray-300">
       <section className="flex flex-col gap-3">
