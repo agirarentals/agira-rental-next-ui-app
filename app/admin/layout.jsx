@@ -1,4 +1,15 @@
 "use client"
+
+import { main } from "framer-motion/client"
+import Sidebar from "./components/Sidebar"
+
 export default function Layout({children}){
-    return <>{children}</>
+    return (
+        <main className="flex">
+            <Sidebar/>
+            <section className="flex-1">
+            {children}
+            </section>
+        </main>
+    )
 }
