@@ -1,5 +1,6 @@
 "use client";
 import { section } from "framer-motion/client";
+import {auth} from '@/lib/firestore/firestore.jsx';
 import {
   Box,
   Cat,
@@ -14,6 +15,8 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
+import { signOut } from "firebase/auth";
 
 const Sidebar = () => {
   const menuList = [
@@ -69,7 +72,17 @@ const Sidebar = () => {
         })}
       </ul>
       <div className="flex justify-center w-full">
-        <button className="flex gap-2 items-center px-3 py-3 hover:bg-indigo-100 rounded-xl w-full justify-center ease-soft-spring duration-400 transition-all"><LogOut className="h-5 w-5"/>Logout</button>
+        <button onClick={async ()=>{
+          try {
+            await toast.promise(signOut(auth),{
+              error:e=>e?.message,
+              loading:"Loading...",
+              success:"Successfully Logged out"
+            })
+          } catch (error) {
+            toast.error(error?.message)
+          }
+        }} className="flex gap-2 items-center px-3 py-3 hover:bg-indigo-100 rounded-xl w-full justify-center ease-soft-spring duration-400 transition-all"><LogOut className="h-5 w-5"/>Logout</button>
       </div>
     </section>
   );
