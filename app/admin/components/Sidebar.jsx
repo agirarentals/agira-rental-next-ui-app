@@ -8,6 +8,7 @@ import {
   LayoutDashboard,
   LibraryBig,
   LogOut,
+  ShieldCheck,
   ShoppingCart,
   Star,
   User,
@@ -59,6 +60,11 @@ const Sidebar = () => {
       name: "Collections",
       link: "/admin/collections",
       icon: <LibraryBig className="h-4 w-4" />,
+    },
+    {
+      name: "Admins",
+      link: "/admin/admins",
+      icon: <ShieldCheck className="h-4 w-4" />,
     },
   ];
   return (
