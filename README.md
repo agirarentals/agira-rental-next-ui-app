@@ -1,4 +1,4 @@
-# Agira Rentals - Version 4 - Till Admin panel layout
+# Agira Rentals - Version 1 - Till Login
 
 # Next.js & NextUI Template
 
