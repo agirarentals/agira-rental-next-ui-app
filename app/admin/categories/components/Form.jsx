@@ -1,5 +1,7 @@
 import { Button } from "@nextui-org/react";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { createNewCategory } from "../../../../lib/firestore/categories/write";
 
 const Form = () => {
   const [data,setData]=useState(null);
@@ -13,10 +15,20 @@ const Form = () => {
       }
     })
   }
+
+  const handleCreate=async ()=>{
+    try {
+      await createNewCategory({data:data,image:image});
+      toast.success("Successfully created");
+    } catch (error) {
+      toast.error(error?.message)
+    }
+  }
+
   return (
     <div className="bg-white rounded-xl p-6 md:w-[400px]">
       <h1 className="font-semibold">Create Category</h1>
-      <form onSubmit={e=>e.preventDefault()} action="" className="flex flex-col gap-3">
+      <form onSubmit={e=>{e.preventDefault(); handleCreate()}} action="" className="flex flex-col gap-3">
         <div className="flex flex-col gap-1">
           <label htmlFor="category-name" className="text-gray-500 text-sm">
             Image <span className="text-red-500">*</span>
