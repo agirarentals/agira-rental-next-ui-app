@@ -37,8 +37,8 @@ const Sidebar = () => {
       icon: <Layers2 className="h-4 w-4" />,
     },
     {
-      name: "Brands",
-      link: "/admin/brands",
+      name: "Rentals",
+      link: "/admin/rentals",
       icon: <Cat className="h-4 w-4" />,
     },
     {
@@ -56,11 +56,11 @@ const Sidebar = () => {
       link: "/admin/reviews",
       icon: <Star className="h-4 w-4" />,
     },
-    {
-      name: "Collections",
-      link: "/admin/collections",
-      icon: <LibraryBig className="h-4 w-4" />,
-    },
+    // {
+    //   name: "Collections",
+    //   link: "/admin/collections",
+    //   icon: <LibraryBig className="h-4 w-4" />,
+    // },
     {
       name: "Admins",
       link: "/admin/admins",
